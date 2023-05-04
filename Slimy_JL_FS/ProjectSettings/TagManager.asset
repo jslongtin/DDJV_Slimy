@@ -38,15 +38,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: sol
+    uniqueID: 2425651459
+    locked: 0
+  - name: deco
+    uniqueID: 3934381939
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Layer 1
-    uniqueID: 2425651459
-    locked: 0
-  - name: Layer 2
+  - name: mur
     uniqueID: 4250941897
     locked: 0
-  - name: Layer 3
+  - name: ciel
     uniqueID: 4189426099
+    locked: 0
+  - name: x
+    uniqueID: 4166625055
     locked: 0
