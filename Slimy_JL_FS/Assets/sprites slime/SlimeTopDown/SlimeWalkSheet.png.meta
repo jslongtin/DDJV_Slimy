@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 12
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -619,7 +619,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       SlimeWalkSheet_9: 1547264430
-      SlimeWalkSheet_10: -1284783405
+      SlimeWalkSheet_7: -1702893389
       SlimeWalkSheet_0: -1332152940
       SlimeWalkSheet_12: 439089274
       SlimeWalkSheet_15: -1746568999
@@ -637,10 +637,10 @@ TextureImporter:
       SlimeWalkSheet_5: 108574679
       SlimeWalkSheet_2: -482005318
       SlimeWalkSheet_13: -908780150
+      SlimeWalkSheet_10: -1284783405
       SlimeWalkSheet_21: 565519536
-      SlimeWalkSheet_6: 246976634
       SlimeWalkSheet_16: -1297936603
-      SlimeWalkSheet_7: -1702893389
+      SlimeWalkSheet_6: 246976634
       SlimeWalkSheet_1: 445159461
   spritePackingTag: 
   pSDRemoveMatte: 0
