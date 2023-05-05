@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -41,6 +42,9 @@ TagManager:
   - name: sol
     uniqueID: 2425651459
     locked: 0
+  - name: sur_sol
+    uniqueID: 4166625055
+    locked: 0
   - name: deco
     uniqueID: 3934381939
     locked: 0
@@ -53,6 +57,6 @@ TagManager:
   - name: ciel
     uniqueID: 4189426099
     locked: 0
-  - name: x
-    uniqueID: 4166625055
+  - name: New Layer 6
+    uniqueID: 4349437
     locked: 0
