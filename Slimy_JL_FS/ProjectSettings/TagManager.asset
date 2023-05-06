@@ -9,10 +9,10 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - loot
   - Water
   - UI
-  - 
+  - bridge
   - 
   - 
   - 
@@ -39,11 +39,17 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: background
+    uniqueID: 2400614449
+    locked: 0
   - name: sol
     uniqueID: 2425651459
     locked: 0
   - name: sur_sol
     uniqueID: 4166625055
+    locked: 0
+  - name: shadows
+    uniqueID: 2550884657
     locked: 0
   - name: mur_sur- sol
     uniqueID: 4189426099
@@ -51,8 +57,14 @@ TagManager:
   - name: Bridges
     uniqueID: 4349437
     locked: 0
+  - name: onBridge
+    uniqueID: 4145413325
+    locked: 0
   - name: deco
     uniqueID: 3934381939
+    locked: 0
+  - name: loot
+    uniqueID: 1785094511
     locked: 0
   - name: Default
     uniqueID: 0
