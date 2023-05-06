@@ -18,9 +18,12 @@ public class Slime : MonoBehaviour
     private Scene currentScene;
 
     private Vector2 lastMovementDirection;
-   
 
+    [Serialize]
+    private int nb_slime = 10;
 
+    public GameObject projectilePrefab;
+    public float shootForce = 10f;
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
@@ -46,6 +49,13 @@ public class Slime : MonoBehaviour
         {
             lastMovementDirection = movementDirection;
         }
+        if (Input.GetMouseButtonDown(0))
+        {
+            ShootProjectile();
+        }
+
+
+
         currentScene = SceneManager.GetActiveScene();
       
         
@@ -101,4 +111,13 @@ public class Slime : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
+
+    void ShootProjectile()
+    {
+        GameObject newProjectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
+        Rigidbody2D rb = newProjectile.GetComponent<Rigidbody2D>();
+        rb.AddForce(lastMovementDirection * shootForce, ForceMode2D.Impulse);
+
+    }
+
 }
