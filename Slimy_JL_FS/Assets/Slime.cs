@@ -29,7 +29,7 @@ public class Slime : MonoBehaviour
     public GameObject[] bridgeblockers; // Array to store the bridge GameObjects
 
     private bool hasShotInTrigger = false;
-
+    public GameObject[] particleSystems;
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
@@ -106,11 +106,14 @@ public class Slime : MonoBehaviour
         if (LayerMask.LayerToName(collision.gameObject.layer).Contains("areaBridge") && hasShotInTrigger && nb_slime > 1)
         {
             int bridgeIndex = int.Parse(LayerMask.LayerToName(collision.gameObject.layer).Substring(10)) - 1;
+
+            // Play the particle system for the respective bridge
+            particleSystems[bridgeIndex].GetComponent<ParticleSystem>().Play();
             bridgeObjects[bridgeIndex].SetActive(true);
             bridgeblockers[bridgeIndex].SetActive(false);
 
             nb_slime--;
-            hasShotInTrigger = false; // Reset the flag after activating the bridge
+            StartCoroutine(ResetHasShotInTrigger());
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -138,6 +141,7 @@ public class Slime : MonoBehaviour
         if (LayerMask.LayerToName(collision.gameObject.layer).Contains("areaBridge"))
         {
             hasShotInTrigger = false; // Reset the flag when the player exits the trigger
+            
         }
     }
     void ShootProjectile()
@@ -152,4 +156,5 @@ public class Slime : MonoBehaviour
         yield return new WaitForSeconds(0.5f); // Wait for 0.5 seconds
         hasShotInTrigger = false; // Reset the flag
     }
+    
 }
