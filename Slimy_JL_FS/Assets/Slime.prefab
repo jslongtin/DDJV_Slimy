@@ -101,7 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vitesse: 5
-  projectilePrefab: {fileID: 4457903327533728329}
+  projectilePrefab: {fileID: 6234113130333909111, guid: 167f7ee7b6207234e9d9d71854fc0ffe,
+    type: 3}
   shootForce: 10
 --- !u!70 &4457903327533728331
 CapsuleCollider2D:

@@ -12,8 +12,8 @@ public class Slime : MonoBehaviour
     private bool ouvrir;
     public float vitesse;
     private Animator anim;
- 
-  
+
+
 
     private Scene currentScene;
 
@@ -24,6 +24,12 @@ public class Slime : MonoBehaviour
 
     public GameObject projectilePrefab;
     public float shootForce = 10f;
+
+    public GameObject[] bridgeObjects; // Array to store the bridge GameObjects
+    public GameObject[] bridgeblockers; // Array to store the bridge GameObjects
+
+    private bool hasShotInTrigger = false;
+
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
@@ -33,7 +39,7 @@ public class Slime : MonoBehaviour
 
     void Update()
     {
-        
+
 
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
@@ -49,16 +55,20 @@ public class Slime : MonoBehaviour
         {
             lastMovementDirection = movementDirection;
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && nb_slime > 1)
         {
             ShootProjectile();
+            nb_slime--;
+            hasShotInTrigger = true;
+            StartCoroutine(ResetHasShotInTrigger()); // Start the Coroutine
+            UnityEngine.Debug.Log(nb_slime);
         }
 
-
+       
 
         currentScene = SceneManager.GetActiveScene();
-      
-        
+
+
         anim.SetFloat("LastMovementDirectionX", lastMovementDirection.x);
         anim.SetFloat("LastMovementDirectionY", lastMovementDirection.y);
 
@@ -68,10 +78,10 @@ public class Slime : MonoBehaviour
 
 
     void FixedUpdate()
-    {    
+    {
         rig.velocity = mouvement * vitesse;
         rig.velocity = rig.velocity.normalized * vitesse;
-        
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -84,16 +94,28 @@ public class Slime : MonoBehaviour
             rig.velocity = Vector2.zero;
             // Disable animations
             anim.enabled = false;
-           
+
             // Wait for a moment
-           
+
         }
     }
 
-   
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (LayerMask.LayerToName(collision.gameObject.layer).Contains("areaBridge") && hasShotInTrigger && nb_slime > 1)
+        {
+            int bridgeIndex = int.Parse(LayerMask.LayerToName(collision.gameObject.layer).Substring(10)) - 1;
+            bridgeObjects[bridgeIndex].SetActive(true);
+            bridgeblockers[bridgeIndex].SetActive(false);
+
+            nb_slime--;
+            hasShotInTrigger = false; // Reset the flag after activating the bridge
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+       
         if (LayerMask.LayerToName(collision.gameObject.layer) == "Ennemi")
         {
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -102,16 +124,22 @@ public class Slime : MonoBehaviour
             rig.velocity = Vector2.zero;
             // Disable animations
             anim.enabled = false;
-  
-          
+
+
         }
         if (LayerMask.LayerToName(collision.gameObject.layer) == "ObjetRamassable")
-        { 
-           
+        {
+
             Destroy(collision.gameObject);
         }
     }
-
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (LayerMask.LayerToName(collision.gameObject.layer).Contains("areaBridge"))
+        {
+            hasShotInTrigger = false; // Reset the flag when the player exits the trigger
+        }
+    }
     void ShootProjectile()
     {
         GameObject newProjectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
@@ -119,5 +147,9 @@ public class Slime : MonoBehaviour
         rb.AddForce(lastMovementDirection * shootForce, ForceMode2D.Impulse);
 
     }
-
+    private IEnumerator ResetHasShotInTrigger()
+    {
+        yield return new WaitForSeconds(0.5f); // Wait for 0.5 seconds
+        hasShotInTrigger = false; // Reset the flag
+    }
 }
