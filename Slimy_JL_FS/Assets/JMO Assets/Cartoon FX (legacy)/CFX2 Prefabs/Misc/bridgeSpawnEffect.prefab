@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4005808538926482}
   - component: {fileID: 198163637374424290}
   - component: {fileID: 199238083427542040}
+  - component: {fileID: 1425587675996963989}
   m_Layer: 0
   m_Name: bridgeSpawnEffect
   m_TagString: Untagged
@@ -4627,3 +4628,14 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!210 &1425587675996963989
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781930563638536}
+  m_Enabled: 1
+  m_SortingLayerID: 185392299
+  m_SortingLayer: 3
+  m_SortingOrder: 0

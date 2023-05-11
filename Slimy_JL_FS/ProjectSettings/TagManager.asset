@@ -63,11 +63,11 @@ TagManager:
   - name: deco
     uniqueID: 3934381939
     locked: 0
-  - name: loot
-    uniqueID: 1785094511
-    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: loot
+    uniqueID: 1785094511
     locked: 0
   - name: mur
     uniqueID: 4250941897
