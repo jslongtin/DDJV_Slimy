@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; // Pour recharger/changer de scène
 
 public class Menu : MonoBehaviour
 {
@@ -17,6 +18,12 @@ public class Menu : MonoBehaviour
     {
         
     }
+    public void OnPlay()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+
     public void OnPause()
     {
             if (Time.timeScale> 0.5f)
