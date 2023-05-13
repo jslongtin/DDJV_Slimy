@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement; // Pour recharger/changer de scène
+using TMPro;
 
 public class Slime : MonoBehaviour
 {
@@ -12,15 +14,14 @@ public class Slime : MonoBehaviour
     private bool ouvrir;
     public float vitesse;
     private Animator anim;
-
+    public TMP_Text slimeText;
 
 
     private Scene currentScene;
 
     private Vector2 lastMovementDirection;
 
-    [Serialize]
-    private int nb_slime = 10;
+    public static int nb_slime = 10;
 
     public GameObject projectilePrefab;
     public float shootForce = 10f;
@@ -40,14 +41,19 @@ public class Slime : MonoBehaviour
     void Update()
     {
 
+        slimeText.text = "Slimes: " + nb_slime.ToString();
 
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
+
         mouvement = new Vector2(horizontalInput, verticalInput).normalized;
 
         anim.SetFloat("Horizontal", mouvement.x);
         anim.SetFloat("Vertical", mouvement.y);
 
+
+        float size = Mathf.Clamp(nb_slime/2, 2, 10);  
+        transform.localScale = new Vector3(size, size, 1);
 
         Vector2 movementDirection = mouvement.normalized;
 
@@ -55,7 +61,7 @@ public class Slime : MonoBehaviour
         {
             lastMovementDirection = movementDirection;
         }
-        if (Input.GetMouseButtonDown(0) && nb_slime > 1)
+        if (Input.GetMouseButtonDown(0) && nb_slime > 0)
         {
             ShootProjectile();
             nb_slime--;
@@ -103,7 +109,7 @@ public class Slime : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (LayerMask.LayerToName(collision.gameObject.layer).Contains("areaBridge") && hasShotInTrigger && nb_slime > 1)
+        if (LayerMask.LayerToName(collision.gameObject.layer).Contains("areaBridge") && hasShotInTrigger && nb_slime > 7)
         {
             int bridgeIndex = int.Parse(LayerMask.LayerToName(collision.gameObject.layer).Substring(10)) - 1;
 
@@ -112,7 +118,7 @@ public class Slime : MonoBehaviour
             bridgeObjects[bridgeIndex].SetActive(true);
             bridgeblockers[bridgeIndex].SetActive(false);
 
-            nb_slime--;
+            nb_slime-=7;
             StartCoroutine(ResetHasShotInTrigger());
         }
     }
@@ -135,6 +141,28 @@ public class Slime : MonoBehaviour
 
             Destroy(collision.gameObject);
         }
+        if (LayerMask.LayerToName(collision.gameObject.layer) == "projectile_enemie")
+        {
+            nb_slime -= 1;
+            Destroy(collision.gameObject);
+        }
+        if (LayerMask.LayerToName(collision.gameObject.layer) == "Ennemi")
+        {
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+            // Stop moving
+            rig.velocity = Vector2.zero;
+            // Disable animations
+            anim.enabled = false;
+
+
+        }
+        if (LayerMask.LayerToName(collision.gameObject.layer) == "portal")
+        {
+
+            StartCoroutine(ChangeScene());
+
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -156,5 +184,19 @@ public class Slime : MonoBehaviour
         yield return new WaitForSeconds(0.5f); // Wait for 0.5 seconds
         hasShotInTrigger = false; // Reset the flag
     }
-    
+    private IEnumerator ChangeScene()
+    {
+        yield return new WaitForSeconds(2f);
+
+        // Assuming blackScreen is your UI Image component
+        for (float t = 0f; t <= 1; t += Time.deltaTime / 2f)
+        {
+            Color newColor = new Color(0, 0, 0, Mathf.Lerp(0, 1, t));
+            blackScreen.color = newColor;
+            yield return null;
+        }
+
+        // Load new scene
+        SceneManager.LoadScene("Niveau2");
+    }
 }
