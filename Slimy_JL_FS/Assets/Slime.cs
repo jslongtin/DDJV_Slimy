@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -30,6 +29,9 @@ public class Slime : MonoBehaviour
     public GameObject[] particleSystems;
 
     private CircleCollider2D circleCollider;
+
+    private bool isDead = false;
+    private float deathAnimDuration = 2f;
 
     void Start()
     {
@@ -64,7 +66,7 @@ public class Slime : MonoBehaviour
             lastMovementDirection = movementDirection;
         }
 
-        if (Input.GetMouseButtonDown(0) && nb_slime > 0)
+        if (!isDead && Input.GetMouseButtonDown(0) && nb_slime > 0)
         {
             ShootProjectile();
             nb_slime--;
@@ -74,10 +76,14 @@ public class Slime : MonoBehaviour
         }
 
         currentScene = SceneManager.GetActiveScene();
-        if (nb_slime <= 0)
+        if (nb_slime <= 0 && !isDead)
         {
+            size = Mathf.Clamp(nb_slime / 3, 1, 20);
+            transform.localScale = new Vector3(size, size, 1);
+            isDead = true;
+            anim.SetBool("dead", true);
+            StartCoroutine(ChangeScene());
             nb_slime = 10;
-            SceneManager.LoadScene(currentScene.name);
         }
 
         anim.SetFloat("LastMovementDirectionX", lastMovementDirection.x);
@@ -96,7 +102,7 @@ public class Slime : MonoBehaviour
         {
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             rig.velocity = Vector2.zero;
-            anim.enabled = false;
+            //anim.enabled = false;
         }
     }
 
@@ -119,7 +125,7 @@ public class Slime : MonoBehaviour
         {
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             rig.velocity = Vector2.zero;
-            anim.enabled = false;
+            //anim.enabled = false;
         }
 
         if (LayerMask.LayerToName(collision.gameObject.layer) == "ObjetRamassable")
@@ -162,8 +168,9 @@ public class Slime : MonoBehaviour
 
     private IEnumerator ChangeScene()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(deathAnimDuration);
 
+        // Fade to black
         for (float t = 0f; t <= 1; t += Time.deltaTime / 2f)
         {
             Color newColor = new Color(0, 0, 0, Mathf.Lerp(0, 1, t));
@@ -171,7 +178,17 @@ public class Slime : MonoBehaviour
             yield return null;
         }
 
-        SceneManager.LoadScene("Niveau2");
+        // Delay before loading the scene
+        yield return new WaitForSeconds(2f);
+
+        anim.SetBool("dead", false);
+        if (isDead) { SceneManager.LoadScene("Niveau1"); }
+        else
+        {
+            SceneManager.LoadScene("Niveau2");
+        }
+        isDead = false;
+
     }
 
     private IEnumerator FadeStart()
