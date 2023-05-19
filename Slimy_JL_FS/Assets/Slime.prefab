@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 4457903327533728326}
   - component: {fileID: 4457903327533728325}
   - component: {fileID: 4457903327533728324}
-  - component: {fileID: 4457903327533728331}
   - component: {fileID: 4457903327533728330}
   - component: {fileID: 4457903327533728327}
-  m_Layer: 0
+  - component: {fileID: 1164146993}
+  m_Layer: 12
   m_Name: Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,25 +101,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vitesse: 5
+  slimeText: {fileID: 0}
+  blackScreen: {fileID: 0}
   projectilePrefab: {fileID: 6234113130333909111, guid: 167f7ee7b6207234e9d9d71854fc0ffe,
     type: 3}
   shootForce: 10
---- !u!70 &4457903327533728331
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4457903327533728329}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0070357323, y: 0}
-  m_Size: {x: 0.574463, y: 0.574463}
-  m_Direction: 0
+  bridgeObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  bridgeblockers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  particleSystems:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!50 &4457903327533728330
 Rigidbody2D:
   serializedVersion: 4
@@ -161,3 +159,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &1164146993
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4457903327533728329}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.27221495

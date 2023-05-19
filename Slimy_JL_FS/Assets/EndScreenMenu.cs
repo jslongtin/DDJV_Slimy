@@ -17,10 +17,12 @@ public class EndScreenMenu : MonoBehaviour
     private bool isRunning = true;
     private bool isShooting = false;
     private Vector3 originalSlimePosition;
+    private Animator slimeAnimator;
 
     private void Start()
     {
         originalSlimePosition = slime.position;
+        slimeAnimator = slime.GetComponent<Animator>(); // Get the Animator component
         StartCoroutine(AnimateEndScreen());
     }
 
@@ -44,6 +46,9 @@ public class EndScreenMenu : MonoBehaviour
                     }
                 }
                 timer += Time.deltaTime;
+
+                // Set the walking animation parameter based on the slime's movement direction
+                slimeAnimator.SetFloat("Horizontal", 1f);
                 yield return null;
             }
 
@@ -66,6 +71,9 @@ public class EndScreenMenu : MonoBehaviour
                     }
                 }
                 timer += Time.deltaTime;
+
+                // Set the walking animation parameter based on the slime's movement direction
+                slimeAnimator.SetFloat("Horizontal", -1f);
                 yield return null;
             }
 
