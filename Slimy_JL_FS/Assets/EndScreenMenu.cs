@@ -14,6 +14,10 @@ public class EndScreenMenu : MonoBehaviour
     public float maxShootInterval = 0.3f;
     public float projectileLifetime = 2f;
 
+    public GameObject[] particleSystemPrefabs;
+    public float particleSystemRadius = 5f;
+    public float particleSystemInterval = 2f;
+
     private bool isRunning = true;
     private bool isShooting = false;
     private Vector3 originalSlimePosition;
@@ -24,6 +28,7 @@ public class EndScreenMenu : MonoBehaviour
         originalSlimePosition = slime.position;
         slimeAnimator = slime.GetComponent<Animator>(); // Get the Animator component
         StartCoroutine(AnimateEndScreen());
+        StartCoroutine(PlayRandomParticleSystems());
     }
 
     private IEnumerator AnimateEndScreen()
@@ -115,5 +120,30 @@ public class EndScreenMenu : MonoBehaviour
         }
 
         slime.position = originalSlimePosition;
+    }
+
+    private IEnumerator PlayRandomParticleSystems()
+    {
+        while (isRunning)
+        {
+            GameObject particleSystemPrefab = particleSystemPrefabs[Random.Range(0, particleSystemPrefabs.Length)];
+            InstantiateParticleSystem(particleSystemPrefab);
+
+            yield return new WaitForSeconds(particleSystemInterval);
+        }
+    }
+
+    private void InstantiateParticleSystem(GameObject particleSystemPrefab)
+    {
+        GameObject particleSystemInstance = Instantiate(particleSystemPrefab, GetRandomPositionAroundCamera(), Quaternion.identity);
+        particleSystemInstance.transform.parent = transform;
+        particleSystemInstance.GetComponent<ParticleSystem>().Play();
+    }
+
+    private Vector3 GetRandomPositionAroundCamera()
+    {
+        Vector3 cameraPosition = Camera.main.transform.position;
+        Vector3 randomOffset = Random.insideUnitCircle.normalized * particleSystemRadius;
+        return cameraPosition + randomOffset;
     }
 }

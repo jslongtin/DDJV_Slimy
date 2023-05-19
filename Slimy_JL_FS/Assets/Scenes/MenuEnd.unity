@@ -421,8 +421,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -692,8 +692,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -917,7 +917,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000011444, y: -51.1}
-  m_SizeDelta: {x: 160, y: 28.9199}
+  m_SizeDelta: {x: 186.68, y: 59.41}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1057566493
 MonoBehaviour:
@@ -1438,6 +1438,12 @@ MonoBehaviour:
   minShootInterval: 0.1
   maxShootInterval: 0.5
   projectileLifetime: 2
+  particleSystemPrefabs:
+  - {fileID: 1247311384876784, guid: 4adffb0018aeda44e9263f901167af1f, type: 3}
+  - {fileID: 8791802859087666345, guid: 7bf6aa4330dd2a346bbc4f2d94d7cfaf, type: 3}
+  - {fileID: 1978689737715041617, guid: 50e51ebe5bfa6bd44aaf0c487d513e4c, type: 3}
+  particleSystemRadius: 5
+  particleSystemInterval: 2
 --- !u!4 &1601687492
 Transform:
   m_ObjectHideFlags: 0
@@ -2065,7 +2071,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000011444, y: 55.8}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 217.17, y: 79.54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2139012050
 MonoBehaviour:
