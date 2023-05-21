@@ -12,6 +12,7 @@ public class Slime : MonoBehaviour
     public float vitesse;
     private Animator anim;
     public TMP_Text slimeText;
+    public TMP_Text hint;
     public Image blackScreen;
 
     private Scene currentScene;
@@ -108,6 +109,10 @@ public class Slime : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (LayerMask.LayerToName(collision.gameObject.layer).Contains("areaBridge"))
+        {
+            hint.text = "Shoot to build a bridge. cost: 7 slime";
+        }
         if (LayerMask.LayerToName(collision.gameObject.layer).Contains("areaBridge") && hasShotInTrigger && nb_slime > 7)
         {
             int bridgeIndex = int.Parse(LayerMask.LayerToName(collision.gameObject.layer).Substring(10)) - 1;
@@ -115,6 +120,7 @@ public class Slime : MonoBehaviour
             bridgeObjects[bridgeIndex].SetActive(true);
             bridgeblockers[bridgeIndex].SetActive(false);
             nb_slime -= 7;
+            
             StartCoroutine(ResetHasShotInTrigger());
         }
     }
@@ -150,6 +156,7 @@ public class Slime : MonoBehaviour
         if (LayerMask.LayerToName(collision.gameObject.layer).Contains("areaBridge"))
         {
             hasShotInTrigger = false;
+            hint.text = "";
         }
     }
 
