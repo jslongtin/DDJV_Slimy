@@ -103,6 +103,7 @@ public class Slime : MonoBehaviour
         {
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             rig.velocity = Vector2.zero;
+            nb_slime--;
             //anim.enabled = false;
         }
     }
@@ -111,7 +112,7 @@ public class Slime : MonoBehaviour
     {
         if (LayerMask.LayerToName(collision.gameObject.layer).Contains("areaBridge"))
         {
-            hint.text = "Shoot to build a bridge. cost: 7 slime";
+            hint.text = "Shoot to build a bridge. cost: 5 slime";
         }
         if (LayerMask.LayerToName(collision.gameObject.layer).Contains("areaBridge") && hasShotInTrigger && nb_slime > 7)
         {
@@ -119,7 +120,7 @@ public class Slime : MonoBehaviour
             particleSystems[bridgeIndex].GetComponent<ParticleSystem>().Play();
             bridgeObjects[bridgeIndex].SetActive(true);
             bridgeblockers[bridgeIndex].SetActive(false);
-            nb_slime -= 7;
+            nb_slime -= 5;
             
             StartCoroutine(ResetHasShotInTrigger());
         }
