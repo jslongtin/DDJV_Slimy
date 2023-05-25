@@ -20,7 +20,7 @@ public class Menu : MonoBehaviour
     }
     public void OnPlay()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Niveau1");
     }
 
 
