@@ -56958,6 +56958,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3172641139353035797, guid: a0a71fda412ad0941ab44f1732ea4c1e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0a71fda412ad0941ab44f1732ea4c1e, type: 3}
 --- !u!1 &652347668
@@ -58074,6 +58079,50 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: -1449152509267254315, guid: 5b94bf9107369684a8153921f763da38, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5b94bf9107369684a8153921f763da38, type: 3}
+--- !u!1 &725078165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 725078167}
+  - component: {fileID: 725078166}
+  m_Layer: 0
+  m_Name: EventManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &725078166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725078165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b69cc0805b206974a9f32d37e71468b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &725078167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725078165}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.5407295, y: -18.258785, z: 4.813426}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &726380532 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2916312984707892528, guid: 680da2b10d1573f46a22fd24722c76b5,
@@ -59866,7 +59915,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 982348718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.8, y: -0.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -80435,13 +80484,18 @@ PrefabInstance:
       objectReference: {fileID: 1392920305}
     - target: {fileID: 5546770624247664854, guid: 0028edfcd61a11949ac12db80b485f67,
         type: 3}
+      propertyPath: arrowGoals.Array.data[0].arrowColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546770624247664854, guid: 0028edfcd61a11949ac12db80b485f67,
+        type: 3}
       propertyPath: arrowGoals.Array.data[0].arrowColor.b
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5546770624247664854, guid: 0028edfcd61a11949ac12db80b485f67,
         type: 3}
       propertyPath: arrowGoals.Array.data[0].arrowColor.g
-      value: 0.95592266
+      value: 0.9568628
       objectReference: {fileID: 0}
     - target: {fileID: 5546770624247664854, guid: 0028edfcd61a11949ac12db80b485f67,
         type: 3}
@@ -80451,7 +80505,7 @@ PrefabInstance:
     - target: {fileID: 5546770624247664854, guid: 0028edfcd61a11949ac12db80b485f67,
         type: 3}
       propertyPath: arrowGoals.Array.data[1].arrowColor.b
-      value: 0
+      value: 0.0039215684
       objectReference: {fileID: 0}
     - target: {fileID: 5546770624247664854, guid: 0028edfcd61a11949ac12db80b485f67,
         type: 3}
@@ -80461,7 +80515,7 @@ PrefabInstance:
     - target: {fileID: 5546770624247664854, guid: 0028edfcd61a11949ac12db80b485f67,
         type: 3}
       propertyPath: arrowGoals.Array.data[1].arrowColor.r
-      value: 0.34384358
+      value: 0.900254
       objectReference: {fileID: 0}
     - target: {fileID: 5546770624247664854, guid: 0028edfcd61a11949ac12db80b485f67,
         type: 3}
@@ -80476,7 +80530,7 @@ PrefabInstance:
     - target: {fileID: 5546770624247664854, guid: 0028edfcd61a11949ac12db80b485f67,
         type: 3}
       propertyPath: arrowGoals.Array.data[2].arrowColor.r
-      value: 0.38496292
+      value: 0.5447296
       objectReference: {fileID: 0}
     - target: {fileID: 5546770624247664854, guid: 0028edfcd61a11949ac12db80b485f67,
         type: 3}
@@ -80491,7 +80545,7 @@ PrefabInstance:
     - target: {fileID: 5546770624247664854, guid: 0028edfcd61a11949ac12db80b485f67,
         type: 3}
       propertyPath: arrowGoals.Array.data[3].arrowColor.r
-      value: 0.2617464
+      value: 0.26241136
       objectReference: {fileID: 0}
     - target: {fileID: 5546770624247664854, guid: 0028edfcd61a11949ac12db80b485f67,
         type: 3}
