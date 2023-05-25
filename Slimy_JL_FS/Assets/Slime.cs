@@ -208,4 +208,13 @@ public class Slime : MonoBehaviour
             yield return null;
         }
     }
+    private IEnumerator FadeEnd()
+    {
+        for (float t = 1f; t <= 1; t -= Time.deltaTime / 2f)
+        {
+            Color newColor = new Color(0, 0, 0, Mathf.Lerp(1, 0, t));
+            blackScreen.color = newColor;
+            yield return null;
+        }
+    }
 }
