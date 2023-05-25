@@ -8,7 +8,14 @@ public class bridgePiedestal : MonoBehaviour
 {
     private UnityAction<object> ev_Slime;
     public static int slimeOnPlace = 0;
-    public GameObject bridge;
+    [SerializeField]
+    private GameObject bridge;
+    [SerializeField]
+    private GameObject blueSlime;
+    [SerializeField]
+    private GameObject angelSlime;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,13 +33,15 @@ public class bridgePiedestal : MonoBehaviour
         if (ob is int)
         {
             slimeOnPlace += (int)ob;
-            Debug.Log(slimeOnPlace);
         }
         if (slimeOnPlace == 3)
         {
-            //faire pont
-            Debug.Log("faire pont");
+    
             bridge.SetActive(true);
+            EventManager.TriggerEvent("sacrifice", (blueSlime.transform.position,angelSlime.transform.position));
+            Destroy(blueSlime);
+            Destroy(angelSlime);
+
         }
 
 

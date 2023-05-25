@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class SlimeController : MonoBehaviour
 {
-    public GameObject otherSlime;
+    public GameObject targetSlime;
 
 
     private void Start()
@@ -14,21 +14,19 @@ public class SlimeController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject == otherSlime)
+        if (other.gameObject == targetSlime)
         {
 
             CheckBridgeUnlockConditions(1);
-            Debug.Log(" slime entered pedestal trigger");
         }
 
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject == otherSlime)
+        if (other.gameObject == targetSlime)
         {
             CheckBridgeUnlockConditions(-1);
-            Debug.Log("slime exited pedestal1 trigger");
         }
 
       

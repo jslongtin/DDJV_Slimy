@@ -48,7 +48,7 @@ public class Slime : MonoBehaviour
     void Update()
     {
         slimeText.text = "Slimes: " + nb_slime.ToString();
-        slimeQuest.text = bridgePiedestal.slimeOnPlace + "/3";
+        slimeQuest.text = bridgePiedestal.slimeOnPlace + "/3 en place";
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
 
@@ -69,7 +69,7 @@ public class Slime : MonoBehaviour
             lastMovementDirection = movementDirection;
         }
 
-        if (!isDead && Input.GetMouseButtonDown(0) && nb_slime > 0)
+        if (!isDead && Input.GetMouseButtonDown(0) && nb_slime > 0 && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Niveau2"))
         {
             ShootProjectile();
             nb_slime--;
