@@ -16,7 +16,9 @@ public class Enemies : MonoBehaviour
     private float vitesseProjectile = 7.0f;
 
     [SerializeField]
-    private GameObject projectilePrefab; // The prefab for the projectile
+    private GameObject projectilePrefab;
+    [SerializeField]
+    private ParticleSystem destroyParticlesPrefab;
 
     private Transform cible;
     private Rigidbody2D rig;
@@ -129,6 +131,8 @@ public class Enemies : MonoBehaviour
             Slime.nb_slime += 5;
             Destroy(gameObject);
             Destroy(collision.gameObject);
+            ParticleSystem destroyParticles = Instantiate(destroyParticlesPrefab, transform.position, Quaternion.identity);
+            destroyParticles.Play();
         }
     }
 

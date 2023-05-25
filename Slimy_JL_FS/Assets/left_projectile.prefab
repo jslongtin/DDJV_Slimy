@@ -97,7 +97,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 6234113130333909111}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 46ef1d9492920104a9a11beed892040f, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -120,7 +120,7 @@ Rigidbody2D:
   m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 46ef1d9492920104a9a11beed892040f, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -139,6 +139,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   lifetime: 5
+  destroyParticlesPrefab: {fileID: 19800000, guid: 13b75a30ff1f891449c57785c50843a8,
+    type: 3}
 --- !u!1 &7118034403172082927
 GameObject:
   m_ObjectHideFlags: 0

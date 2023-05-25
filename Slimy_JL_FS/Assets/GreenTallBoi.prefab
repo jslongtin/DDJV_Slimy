@@ -281,6 +281,8 @@ MonoBehaviour:
   vitesse: 1
   vitesseProjectile: 5
   projectilePrefab: {fileID: 100002, guid: 52d8ca61b3953904bb6ac419c7f384a9, type: 3}
+  destroyParticlesPrefab: {fileID: 19800000, guid: 13b75a30ff1f891449c57785c50843a8,
+    type: 3}
 --- !u!1 &2916312984866608487
 GameObject:
   m_ObjectHideFlags: 0
