@@ -12,7 +12,7 @@ namespace Cainos.PixelArtTopDown_Basic
 
       
         [SerializeField]
-        private Color targetColor = new Color(255,255,255,255);
+        private Color targetColor = new Color(255,255,255,0);
 
   
         private void Update()
