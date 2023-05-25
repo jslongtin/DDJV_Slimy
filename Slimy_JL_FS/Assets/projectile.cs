@@ -4,24 +4,26 @@ using UnityEngine;
 
 public class projectile : MonoBehaviour
 {
-
     public float damage = 10f;
-
     public float lifetime = 5f;
+
+    // Reference to the particle system prefab
+    public ParticleSystem destroyParticlesPrefab;
 
     void Start()
     {
-        Destroy(gameObject, lifetime);
+        StartCoroutine(DestroyAfterTime(lifetime));
     }
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        //if (collision.gameObject.CompareTag("Ennemi"))
-        //{
-           
-        //    // do something
-        //}
 
-        //// Destroy the projectile after it collides with an object
-        //Destroy(gameObject);
+    IEnumerator DestroyAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        // Instantiate the particle system at the projectile's location
+        ParticleSystem destroyParticles = Instantiate(destroyParticlesPrefab, transform.position, Quaternion.identity);
+        destroyParticles.Play();
+
+        // Destroy the projectile
+        Destroy(gameObject);
     }
 }
