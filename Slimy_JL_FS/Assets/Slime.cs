@@ -12,6 +12,8 @@ public class Slime : MonoBehaviour
     public float vitesse;
     private Animator anim;
     public TMP_Text slimeText;
+    public TMP_Text slimeQuest;
+
     public TMP_Text hint;
     public Image blackScreen;
 
@@ -46,7 +48,7 @@ public class Slime : MonoBehaviour
     void Update()
     {
         slimeText.text = "Slimes: " + nb_slime.ToString();
-
+        slimeQuest.text = bridgePiedestal.slimeOnPlace + "/3";
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
 
