@@ -128,6 +128,7 @@ public class Enemies : MonoBehaviour
         {
             Slime.nb_slime += 5;
             Destroy(gameObject);
+            Destroy(collision.gameObject);
         }
     }
 

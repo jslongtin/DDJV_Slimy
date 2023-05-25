@@ -15,12 +15,13 @@ public class projectile : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            // do something
-        }
+        //if (collision.gameObject.CompareTag("Ennemi"))
+        //{
+           
+        //    // do something
+        //}
 
-        // Destroy the projectile after it collides with an object
-        Destroy(gameObject);
+        //// Destroy the projectile after it collides with an object
+        //Destroy(gameObject);
     }
 }
