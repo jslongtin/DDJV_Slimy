@@ -3,17 +3,12 @@ using UnityEngine.Events;
 
 public class SlimeController : MonoBehaviour
 {
-    public Transform pedestal;
-    public Transform bridge;
     public GameObject otherSlime;
-
-
-    private bool isOnPedestal;
 
 
     private void Start()
     {
-        isOnPedestal = false;
+  
 
     }
 
@@ -21,30 +16,28 @@ public class SlimeController : MonoBehaviour
     {
         if (other.gameObject == otherSlime)
         {
-            isOnPedestal = true;
+
+            CheckBridgeUnlockConditions(1);
             Debug.Log(" slime entered pedestal trigger");
         }
 
-        CheckBridgeUnlockConditions();
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject == otherSlime)
         {
-            isOnPedestal = false;
+            CheckBridgeUnlockConditions(-1);
             Debug.Log("slime exited pedestal1 trigger");
         }
 
-        CheckBridgeUnlockConditions();
+      
     }
 
-    private void CheckBridgeUnlockConditions()
+    private void CheckBridgeUnlockConditions(int value)
     {
         // Check if all conditions are met to unlock the bridge
-        if (isOnPedestal)
-        {
-            EventManager.TriggerEvent("stepPiedestal", otherSlime);
-        }
+         EventManager.TriggerEvent("stepPiedestal", value);
+       
     }
 }
