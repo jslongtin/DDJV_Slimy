@@ -193,10 +193,11 @@ public class Slime : MonoBehaviour
 
         anim.SetBool("dead", false);
         if (isDead) { SceneManager.LoadScene("Niveau1"); }
-        else
+        else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Niveau2"))
         {
-            SceneManager.LoadScene("Niveau2");
+            SceneManager.LoadScene("MenuEnd");
         }
+        else { SceneManager.LoadScene("Niveau2"); }
         isDead = false;
 
     }
