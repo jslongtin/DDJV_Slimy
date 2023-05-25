@@ -150,13 +150,13 @@ public class Enemies : MonoBehaviour
 
     private IEnumerator ShootAtSlime()
     {
-        while (estEnChasse) // Keep shooting as long as chasing
+        while (estEnChasse) 
         {
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
             rb.velocity = direction * vitesseProjectile;
 
-            yield return new WaitForSeconds(4f); // Wait for 4 seconds before the next shot
+            yield return new WaitForSeconds(4f); 
 
             // When we're done shooting, mark that we're not shooting anymore
             if (!estEnChasse)
