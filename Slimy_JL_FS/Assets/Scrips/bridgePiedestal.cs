@@ -8,6 +8,7 @@ public class bridgePiedestal : MonoBehaviour
 {
     private UnityAction<object> ev_Slime;
     public static int slimeOnPlace = 0;
+    public GameObject bridge;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,7 @@ public class bridgePiedestal : MonoBehaviour
         {
             //faire pont
             Debug.Log("faire pont");
+            bridge.SetActive(true);
         }
 
 
