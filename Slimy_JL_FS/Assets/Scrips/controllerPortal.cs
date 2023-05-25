@@ -24,16 +24,6 @@ public class controllerPortal : MonoBehaviour
 
     }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject == otherSlime)
-        {
-            CheckBridgeUnlockConditions(-1);
-            Debug.Log("slime exited pedestal1 trigger");
-        }
-
-
-    }
 
     private void CheckBridgeUnlockConditions(int value)
     {

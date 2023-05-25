@@ -32,7 +32,7 @@ public class eventPortal : MonoBehaviour
                 particleSystems[2].GetComponent<ParticleSystem>().Play();
             }
             
-            Debug.Log("atata");
+            
         }
        
 
