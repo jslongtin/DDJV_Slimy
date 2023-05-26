@@ -64,6 +64,9 @@ TagManager:
   - name: deco
     uniqueID: 3934381939
     locked: 0
+  - name: stairs
+    uniqueID: 2984853419
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
