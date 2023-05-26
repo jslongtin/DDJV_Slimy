@@ -14,7 +14,7 @@ public class bridgePiedestal : MonoBehaviour
     private GameObject blueSlime;
     [SerializeField]
     private GameObject angelSlime;
-
+    public GameObject invisibleTileMap;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +41,7 @@ public class bridgePiedestal : MonoBehaviour
             EventManager.TriggerEvent("sacrifice", (blueSlime.transform.position,angelSlime.transform.position));
             Destroy(blueSlime);
             Destroy(angelSlime);
-
+            invisibleTileMap.GetComponent<BoxCollider2D>().enabled = false;
         }
 
 
