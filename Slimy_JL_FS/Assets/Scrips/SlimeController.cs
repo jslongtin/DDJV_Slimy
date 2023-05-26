@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class SlimeController : MonoBehaviour
 {
     public GameObject targetSlime;
-
+   
 
     private void Start()
     {
@@ -36,6 +36,7 @@ public class SlimeController : MonoBehaviour
     {
         // Check if all conditions are met to unlock the bridge
          EventManager.TriggerEvent("stepPiedestal", value);
-       
+        
+
     }
 }
