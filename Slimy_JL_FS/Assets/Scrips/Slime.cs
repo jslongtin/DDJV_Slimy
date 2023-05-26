@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using static System.Net.Mime.MediaTypeNames;
 
 public class Slime : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class Slime : MonoBehaviour
     public TMP_Text slimeQuest;
 
     public TMP_Text hint;
-    public Image blackScreen;
+    public UnityEngine.UI.Image blackScreen;
 
     private Scene currentScene;
     private Vector2 lastMovementDirection;
@@ -68,7 +69,10 @@ public class Slime : MonoBehaviour
         {
             lastMovementDirection = movementDirection;
         }
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Quit();
+        }
         if (!isDead && Input.GetMouseButtonDown(0) && nb_slime > 0 && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Niveau2"))
         {
             ShootProjectile();
@@ -169,7 +173,12 @@ public class Slime : MonoBehaviour
         Rigidbody2D rb = newProjectile.GetComponent<Rigidbody2D>();
         rb.AddForce(lastMovementDirection * shootForce, ForceMode2D.Impulse);
     }
+    private void Quit()
+    {
+        UnityEngine.Application.Quit();
+        UnityEngine.Debug.Log("quitted");
 
+    }
     private IEnumerator ResetHasShotInTrigger()
     {
         yield return new WaitForSeconds(0.5f);
