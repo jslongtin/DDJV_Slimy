@@ -8,7 +8,7 @@
 <h3 align="center">Slimy, you must leave it behind</h3>
 
   <p align="center">
-    Game jam style project in he them : you must leave it behind 
+    Game jam style project in he theme : you must leave it behind 
     <br />
     
   </p>
@@ -44,6 +44,7 @@
 ![Homescreen](Slimy_JL_FS/Assets/Images/HomeScreen.png)
 
 Final projet for our video game course.  The theme was "you must leave it behind". We made a game where you play as a slime that has to leave behind its body parts to get to the end of the level.
+Inspired by slime rancher
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
